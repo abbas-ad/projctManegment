@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const { AllRoutes } = require("./router/router");
 
 module.exports = class Applications {
   #app = express();
@@ -36,9 +37,11 @@ module.exports = class Applications {
   createRoute() {
     this.#app.get("/", (req, res, next) => {
       return res.json({
-        message: " thisi s a new express aplications",
+        message: " this is a new express aplications",
       });
     });
+    this.#app.use(AllRoutes);
+ 
   }
 
   errorHandler() {
